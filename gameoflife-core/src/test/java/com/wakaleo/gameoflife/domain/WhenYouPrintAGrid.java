@@ -18,12 +18,16 @@ public class WhenYouPrintAGrid {
         Cell[][] gridContents = {
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL},
+                {DEAD_CELL, DEAD_CELL, DEAD_CELL},
+                {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL}
         };
 
-        String expectedPrintedGrid = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String expectedPrintedGrid = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE + "";
 
         GridWriter gridWriter = new GridWriter();
         String printedGrid = gridWriter.convertToString(gridContents);
@@ -35,12 +39,16 @@ public class WhenYouPrintAGrid {
         Cell[][] gridContents = {
                 {LIVE_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, LIVE_CELL, DEAD_CELL},
+                {DEAD_CELL, LIVE_CELL, DEAD_CELL},
+                {DEAD_CELL, LIVE_CELL, DEAD_CELL},
                 {DEAD_CELL, LIVE_CELL, DEAD_CELL}
         };
 
-        String expectedPrintedGrid = "*.." + NEW_LINE +
-                ".*." + NEW_LINE +
-                ".*." + NEW_LINE + "";
+        String expectedPrintedGrid = "*...." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE + "";
 
         GridWriter gridWriter = new GridWriter();
         String printedGrid = gridWriter.convertToString(gridContents);

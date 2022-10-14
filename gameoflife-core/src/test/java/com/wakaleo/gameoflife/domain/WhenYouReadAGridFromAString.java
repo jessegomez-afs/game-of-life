@@ -39,11 +39,15 @@ public class WhenYouReadAGridFromAString {
 
     @Test
     public void shouldBeAbleToReadAGridOfCellsFromAString() {
-        String gridContents = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "...";
+        String gridContents = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                ".....";
 
         Cell[][] expectedCells = {
+                {DEAD_CELL, DEAD_CELL, DEAD_CELL},
+                {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL}
@@ -57,11 +61,15 @@ public class WhenYouReadAGridFromAString {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldRefuseIllegalCellCharacters() {
-        String gridContents = "..." + NEW_LINE +
-                ".Z." + NEW_LINE +
-                "...";
+        String gridContents = "....." + NEW_LINE +
+                ".Z..." + NEW_LINE +
+                ".Z..." + NEW_LINE +
+                ".Z..." + NEW_LINE +
+                ".....";
 
         Cell[][] expectedCells = {
+                {DEAD_CELL, DEAD_CELL, DEAD_CELL},
+                {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL}
@@ -75,12 +83,16 @@ public class WhenYouReadAGridFromAString {
 
     @Test
     public void shouldBeAbleToReadAGridContainingLiveAndDeadCells() {
-        String gridContents = "*.." + NEW_LINE +
-                ".*." + NEW_LINE +
-                "..*";
+        String gridContents = "*...." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                "..*..";
 
         Cell[][] expectedCells = {
                 {LIVE_CELL, DEAD_CELL, DEAD_CELL},
+                {DEAD_CELL, LIVE_CELL, DEAD_CELL},
+                {DEAD_CELL, LIVE_CELL, DEAD_CELL},
                 {DEAD_CELL, LIVE_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, LIVE_CELL}
         };
@@ -93,12 +105,16 @@ public class WhenYouReadAGridFromAString {
 
     @Test
     public void shouldBeAbleToReadAnAsymetricalGridContainingLiveAndDeadCells() {
-        String gridContents = "...." + NEW_LINE +
-                "**.." + NEW_LINE +
-                "..*.";
+        String gridContents = "......" + NEW_LINE +
+                "**...." + NEW_LINE +
+                "**...." + NEW_LINE +
+                "**...." + NEW_LINE +
+                "..*...";
 
         Cell[][] expectedCells = {
                 {DEAD_CELL, DEAD_CELL, DEAD_CELL, DEAD_CELL},
+                {LIVE_CELL, LIVE_CELL, DEAD_CELL, DEAD_CELL},
+                {LIVE_CELL, LIVE_CELL, DEAD_CELL, DEAD_CELL},
                 {LIVE_CELL, LIVE_CELL, DEAD_CELL, DEAD_CELL},
                 {DEAD_CELL, DEAD_CELL, LIVE_CELL, DEAD_CELL}
         };

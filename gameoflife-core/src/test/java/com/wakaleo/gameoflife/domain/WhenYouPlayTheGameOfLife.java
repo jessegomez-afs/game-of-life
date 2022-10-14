@@ -15,13 +15,17 @@ public class WhenYouPlayTheGameOfLife {
 
     @Test
     public void aDeadCellWithNoNeighboursShouldRemainDeadInTheNextGeneration() {
-        String initialGrid = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "...";
+        String initialGrid = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                ".....";
 
-        String expectedNextGrid = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String expectedNextGrid = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(initialGrid));
         theUniverse.createNextGeneration();
@@ -32,13 +36,17 @@ public class WhenYouPlayTheGameOfLife {
 
     @Test
     public void aDeadCellWithOneLiveNeighbourShouldRemainDeadInTheNextGeneration() {
-        String initialGrid = "..." + NEW_LINE +
-                ".*." + NEW_LINE +
-                "...";
+        String initialGrid = "....." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".....";
 
-        String expectedNextGrid = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String expectedNextGrid = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(initialGrid));
         theUniverse.createNextGeneration();
@@ -49,13 +57,17 @@ public class WhenYouPlayTheGameOfLife {
 
     @Test
     public void liveCellaWith2or3iveNeighbourShouldRemainAliveInTheNextGeneration() {
-        String initialGrid = "**." + NEW_LINE +
-                "**." + NEW_LINE +
-                "...";
+        String initialGrid = "**..." + NEW_LINE +
+                "**..." + NEW_LINE +
+                "**..." + NEW_LINE +
+                "**..." + NEW_LINE +
+                ".....";
 
-        String expectedNextGrid = "**." + NEW_LINE +
-                "**." + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String expectedNextGrid = "**..." + NEW_LINE +
+                "**..." + NEW_LINE +
+                "**..." + NEW_LINE +
+                "**..." + NEW_LINE +
+                "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(initialGrid));
         theUniverse.createNextGeneration();
@@ -66,13 +78,17 @@ public class WhenYouPlayTheGameOfLife {
 
     @Test
     public void aLiveCellWithExactlyTwoLiveNeighbourShouldRemainAliveInTheNextGeneration() {
-        String initialGrid = "..." + NEW_LINE +
-                "***" + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String initialGrid = "....." + NEW_LINE +
+                "*****" + NEW_LINE +
+                "*****" + NEW_LINE +
+                "*****" + NEW_LINE +
+                "....." + NEW_LINE + "";
 
-        String expectedNextGrid = ".*." + NEW_LINE +
-                ".*." + NEW_LINE +
-                ".*." + NEW_LINE + "";
+        String expectedNextGrid = ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE +
+                ".*..." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(initialGrid));
         theUniverse.createNextGeneration();
@@ -83,13 +99,17 @@ public class WhenYouPlayTheGameOfLife {
 
     @Test
     public void aCellWithNoNeighboursShouldDieInTheNextGeneration() {
-        String initialGrid = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String initialGrid = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE + "";
 
-        String expectedNextGrid = "..." + NEW_LINE +
-                "..." + NEW_LINE +
-                "..." + NEW_LINE + "";
+        String expectedNextGrid = "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE +
+                "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(initialGrid));
         theUniverse.createNextGeneration();

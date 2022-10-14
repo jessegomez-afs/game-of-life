@@ -14,7 +14,7 @@ public class WhenYouCreateANewUniverse {
 
     private static final String NEW_LINE = System.getProperty("line.separator");
 
-    public static final String EMPTY_GRID = "..." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
+    public static final String EMPTY_GRID = "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "";
 
     @Test
     public void aNewUniverseShouldContainOnlyDeadCells() {
@@ -26,7 +26,7 @@ public class WhenYouCreateANewUniverse {
     @Test
     public void aUniverseSeededWithAnEmpyGridContentWillContainAnEmptyGrid() {
 
-        String seededGrid = "..." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
+        String seededGrid = "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE  + "....." + NEW_LINE  + "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         String currentGrid = theUniverse.getGrid();
@@ -46,9 +46,9 @@ public class WhenYouCreateANewUniverse {
     @Test
     public void aUniverseSeededWithAGridContainingASingleLiveCellContentWillSpawnAnEmptyGrid() {
 
-        String seededGrid = "..." + NEW_LINE + ".*." + NEW_LINE + "..." + NEW_LINE + "";
+        String seededGrid = "....." + NEW_LINE + ".*..." + NEW_LINE + "....." + NEW_LINE  + "....." + NEW_LINE  + "....." + NEW_LINE + "";
 
-        String expectedGrid = "..." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
+        String expectedGrid = "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.spawnsANewGeneration();
@@ -59,7 +59,7 @@ public class WhenYouCreateANewUniverse {
     @Test
     public void aUniverseSeededWithAGridWithLivingCellsContentWillContainThatGrid() {
 
-        String seededGrid = "*.." + NEW_LINE + ".*." + NEW_LINE + "..*" + NEW_LINE + "";
+        String seededGrid = "*...." + NEW_LINE + ".*..." + NEW_LINE + "....*" + NEW_LINE + "....*" + NEW_LINE + "....*" + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         String currentGrid = theUniverse.getGrid();
@@ -69,9 +69,9 @@ public class WhenYouCreateANewUniverse {
     @Test
     public void aUniverseSpawnsANewGridInTheNextGeneration() {
 
-        String seededGrid = "..." + NEW_LINE + "***" + NEW_LINE + "..." + NEW_LINE + "";
+        String seededGrid = "....." + NEW_LINE + "*****" + NEW_LINE + "....." + NEW_LINE  + "....." + NEW_LINE  + "....." + NEW_LINE + "";
 
-        String expectedNextGeneration = ".*." + NEW_LINE + ".*." + NEW_LINE + ".*." + NEW_LINE + "";
+        String expectedNextGeneration = ".*..." + NEW_LINE + ".*..." + NEW_LINE + ".*..." + NEW_LINE  + ".*..." + NEW_LINE  + ".*..." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.createNextGeneration();
@@ -81,23 +81,25 @@ public class WhenYouCreateANewUniverse {
 
     @Test
     public void aUserCanAssignALiveCellAtAGivenPointInTheGrid() {
-        String seededGrid = "..." + NEW_LINE + "..." + NEW_LINE + "..." + NEW_LINE + "";
+        String seededGrid = "....." + NEW_LINE + "....." + NEW_LINE + "....." + NEW_LINE  + "....." + NEW_LINE  + "....." + NEW_LINE + "";
 
-        String expectedState = "*.." + NEW_LINE + "*.." + NEW_LINE + ".*." + NEW_LINE + "";
+        String expectedState = "*...." + NEW_LINE + "*...." + NEW_LINE + ".*..." + NEW_LINE  + ".*..." + NEW_LINE  + ".*..." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.setLiveCellAt(0, 0);
         theUniverse.setLiveCellAt(1, 0);
         theUniverse.setLiveCellAt(2, 1);
+        theUniverse.setLiveCellAt(3, 2);
+        theUniverse.setLiveCellAt(4, 3);
 
         assertThat(theUniverse.getGrid(), is(expectedState));
     }
 
     @Test
     public void aUserCanAssignADeadCellAtAGivenPointInTheGrid() {
-        String seededGrid = "***" + NEW_LINE + "***" + NEW_LINE + "***" + NEW_LINE + "";
+        String seededGrid = "*****" + NEW_LINE + "*****" + NEW_LINE   + "*****" + NEW_LINE + "*****" + NEW_LINE + "*****" + NEW_LINE + "";
 
-        String expectedState = "*.*" + NEW_LINE + "***" + NEW_LINE + "***" + NEW_LINE + "";
+        String expectedState = "*.***" + NEW_LINE + "*****" + NEW_LINE + "*****" + NEW_LINE + "*****" + NEW_LINE + "*****" + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
         theUniverse.setDeadCellAt(0, 1);
@@ -107,23 +109,27 @@ public class WhenYouCreateANewUniverse {
 
     @Test
     public void aUserCanReadALiveCellValueAtAGivenPointInTheGrid() {
-        String seededGrid = "*.." + NEW_LINE + "*.." + NEW_LINE + ".*." + NEW_LINE + "";
+        String seededGrid = "*...." + NEW_LINE + "*...." + NEW_LINE + ".*..." + NEW_LINE + ".*..." + NEW_LINE+ ".*..." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
 
         assertThat(theUniverse.getCellAt(0, 0), is(LIVE_CELL));
         assertThat(theUniverse.getCellAt(1, 0), is(LIVE_CELL));
         assertThat(theUniverse.getCellAt(2, 1), is(LIVE_CELL));
+        assertThat(theUniverse.getCellAt(3, 2), is(LIVE_CELL));
+        assertThat(theUniverse.getCellAt(4, 3), is(LIVE_CELL));
     }
 
     @Test
     public void aUserCanReadADeadCellValueAtAGivenPointInTheGrid() {
-        String seededGrid = "*.." + NEW_LINE + "*.." + NEW_LINE + ".*." + NEW_LINE + "";
+        String seededGrid = "*...." + NEW_LINE + "*...." + NEW_LINE + ".*..." + NEW_LINE + ".*..." + NEW_LINE+ ".*..." + NEW_LINE + "";
 
         Universe theUniverse = new Universe(seededWith(seededGrid));
 
         assertThat(theUniverse.getCellAt(0, 1), is(DEAD_CELL));
         assertThat(theUniverse.getCellAt(1, 1), is(DEAD_CELL));
+        assertThat(theUniverse.getCellAt(2, 1), is(DEAD_CELL));
+        assertThat(theUniverse.getCellAt(3, 1), is(DEAD_CELL));
     }
 
     @Test
@@ -134,6 +140,8 @@ public class WhenYouCreateANewUniverse {
         Cell[][] expectedCells = new Cell[][]{
                 {LIVE_CELL, DEAD_CELL, DEAD_CELL},
                 {LIVE_CELL, DEAD_CELL, DEAD_CELL},
+                {DEAD_CELL, LIVE_CELL, DEAD_CELL},
+                {DEAD_CELL, LIVE_CELL, DEAD_CELL},
                 {DEAD_CELL, LIVE_CELL, DEAD_CELL},
         };
 
