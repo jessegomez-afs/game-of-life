@@ -8,11 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-<<<<<<< HEAD
                 sh 'mvn -X test' 
-=======
-                sh 'mvn install' 
->>>>>>> 354e8d7a54a09116bf2017151ebba4c0f5e0526d
             }
         }
     }
